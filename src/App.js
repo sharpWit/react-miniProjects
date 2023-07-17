@@ -1,7 +1,8 @@
 // import StepMessage from "./components/steps/StepMessage";
 // import Steps from "./components/steps/Steps";
 
-import Accordion, { faqs } from "./components/accordion/Accordion";
+// import Accordion, { faqs } from "./components/accordion/Accordion";
+import TipCalculator from "./components/tip-calculator/TipCalculator";
 function App() {
   return (
     <div>
@@ -14,7 +15,8 @@ function App() {
         <p>React children prop</p>
         <p>🤩</p>
       </StepMessage> */}
-      <Accordion data={faqs} />
+      {/* <Accordion data={faqs} /> */}
+      <TipCalculator />
     </div>
   );
 }
