@@ -1,9 +1,11 @@
-import UsePopcorn from "./components/usepopcorn/UsePopcorn";
+// import UsePopcorn from "./components/usepopcorn/UsePopcorn";
+import StarRating from "./components/usepopcorn/StarRating";
 
 function App() {
   return (
     <>
-      <UsePopcorn />
+      <StarRating maxRating={5} />
+      {/* <UsePopcorn /> */}
     </>
   );
 }
