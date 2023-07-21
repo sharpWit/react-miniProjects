@@ -7,19 +7,20 @@ import Box from "./Box";
 import MovieList from "./MovieList";
 import WatchedSummary from "./WatchedSummary";
 import WatchedMoviesList from "./WatchedMoviesList";
+import MoviesDetail from "./MoviesDetail";
 import Loader from "./Loader";
 import ErrorMessage from "./ErrorMessage";
-// import { tempMovieData, tempWatchedData } from "./data";
 import "./index.css";
 
 const KEY = "da9f5e8a";
 
 export default function UsePopcorn() {
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState("persia");
   const [movies, setMovies] = useState([]);
   const [watched, setWatched] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
+  const [selectedId, setSelectedId] = useState(null);
 
   useEffect(
     function () {
@@ -56,6 +57,22 @@ export default function UsePopcorn() {
     [query]
   );
 
+  function handleSelectMovie(id) {
+    setSelectedId((selectedId) => (id === selectedId ? null : id));
+  }
+
+  function handleCloseMovie() {
+    setSelectedId(null);
+  }
+
+  function handleAddWatched(movie) {
+    setWatched((watched) => [...watched, movie]);
+  }
+
+  function handleDeleteWatched(id) {
+    setWatched((watched) => watched.filter((movie) => movie.imdbID !== id));
+  }
+
   return (
     <>
       <NavBar>
@@ -63,23 +80,30 @@ export default function UsePopcorn() {
         <NumResults movies={movies} />
       </NavBar>
       <Main>
-        {/* <Box element={<MovieList movies={movies} />} />
-        <Box
-          element={
-            <>
-              <WatchedSummary watched={watched} />
-              <WatchedMoviesList watched={watched} />
-            </>
-          }
-        /> */}
         <Box>
           {isLoading && <Loader />}
-          {!isLoading && !error && <MovieList movies={movies} />}
+          {!isLoading && !error && (
+            <MovieList movies={movies} onSelectMovie={handleSelectMovie} />
+          )}
           {error && <ErrorMessage message={error} />}
         </Box>
         <Box>
-          <WatchedSummary watched={watched} />
-          <WatchedMoviesList watched={watched} />
+          {selectedId ? (
+            <MoviesDetail
+              selectedId={selectedId}
+              onCloseMovie={handleCloseMovie}
+              onAddWatched={handleAddWatched}
+              watched={watched}
+            />
+          ) : (
+            <>
+              <WatchedSummary watched={watched} />
+              <WatchedMoviesList
+                watched={watched}
+                onDeleteWatched={handleDeleteWatched}
+              />
+            </>
+          )}
         </Box>
       </Main>
     </>
