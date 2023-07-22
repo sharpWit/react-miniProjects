@@ -1,7 +1,7 @@
-// import UsePopcorn from "./components/usepopcorn/UsePopcorn";
+import UsePopcorn from "./components/usepopcorn/UsePopcorn";
 // import StarRating from "./components/rating/StarRating";
 
-import CurrConverter from "./components/currency-converter/CurrConverter";
+// import CurrConverter from "./components/currency-converter/CurrConverter";
 
 // import TextExpand from "./components/text-expander/TextExpand";
 
@@ -18,8 +18,8 @@ function App() {
         messages={["Terrible", "Bad", "Okay", "Good", "Amazing"]}
       />
       <StarRating size={24} color="red" className="test" defaultValue={1} /> */}
-      {/* <UsePopcorn /> */}
-      <CurrConverter />
+      <UsePopcorn />
+      {/* <CurrConverter /> */}
     </>
   );
 }
