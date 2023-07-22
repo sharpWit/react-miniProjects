@@ -70,6 +70,21 @@ function MoviesDetail({ selectedId, onCloseMovie, onAddWatched, watched }) {
     [title]
   );
 
+  useEffect(
+    function () {
+      function callBalck(e) {
+        if (e.code === "Escape") {
+          onCloseMovie();
+        }
+      }
+      document.addEventListener("keydown", callBalck);
+      return function () {
+        document.removeEventListener("keydown", callBalck);
+      };
+    },
+    [onCloseMovie]
+  );
+
   return (
     <div className="details">
       {isLoading ? (
