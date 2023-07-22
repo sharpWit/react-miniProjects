@@ -1,5 +1,7 @@
-import UsePopcorn from "./components/usepopcorn/UsePopcorn";
+// import UsePopcorn from "./components/usepopcorn/UsePopcorn";
 // import StarRating from "./components/rating/StarRating";
+
+import GetLocation from "./components/use-geolocation/GetLocation";
 
 // import CurrConverter from "./components/currency-converter/CurrConverter";
 
@@ -18,8 +20,9 @@ function App() {
         messages={["Terrible", "Bad", "Okay", "Good", "Amazing"]}
       />
       <StarRating size={24} color="red" className="test" defaultValue={1} /> */}
-      <UsePopcorn />
+      {/* <UsePopcorn /> */}
       {/* <CurrConverter /> */}
+      <GetLocation />
     </>
   );
 }
