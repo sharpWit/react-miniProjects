@@ -1,7 +1,9 @@
 // import UsePopcorn from "./components/usepopcorn/UsePopcorn";
 // import StarRating from "./components/rating/StarRating";
 
-import GetLocation from "./components/use-geolocation/GetLocation";
+import ClassyWeather from "./components/classy-weather/ClassyWeather";
+
+// import GetLocation from "./components/use-geolocation/GetLocation";
 
 // import CurrConverter from "./components/currency-converter/CurrConverter";
 
@@ -22,7 +24,8 @@ function App() {
       <StarRating size={24} color="red" className="test" defaultValue={1} /> */}
       {/* <UsePopcorn /> */}
       {/* <CurrConverter /> */}
-      <GetLocation />
+      {/* <GetLocation /> */}
+      <ClassyWeather />
     </>
   );
 }
