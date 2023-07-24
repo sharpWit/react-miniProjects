@@ -1,7 +1,8 @@
 // import UsePopcorn from "./components/usepopcorn/UsePopcorn";
 // import StarRating from "./components/rating/StarRating";
 
-import ClassyWeather from "./components/classy-weather/ClassyWeather";
+// import ClassyWeather from "./components/classy-weather/ClassyWeather";
+import ClassyWeather from "./components/classy-weather/ClassyWeather-v1";
 
 // import GetLocation from "./components/use-geolocation/GetLocation";
 

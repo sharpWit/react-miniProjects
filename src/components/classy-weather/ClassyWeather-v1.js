@@ -1,6 +1,7 @@
 import React from "react";
 import "./index.css";
 import Weather from "./Weather";
+import Input from "./Input";
 
 function convertToFlag(countryCode) {
   const codePoints = countryCode
@@ -11,17 +12,15 @@ function convertToFlag(countryCode) {
 }
 
 class ClassyWeather extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      location: "tehran",
-      isLoading: false,
-      displayLocation: "",
-      weather: {},
-    };
-    this.fetchWeather = this.fetchWeather.bind(this);
-  }
-  async fetchWeather() {
+  state = {
+    location: "",
+    isLoading: false,
+    displayLocation: "",
+    weather: {},
+  };
+  fetchWeather = async () => {
+    if (this.state.location.length < 2) return this.setState({ weather: {} });
+
     try {
       this.setState({ isLoading: true });
       // 1) Getting location (geocoding)
@@ -50,20 +49,31 @@ class ClassyWeather extends React.Component {
     } finally {
       this.setState({ isLoading: false });
     }
+  };
+
+  setLocation = (e) => this.setState({ location: e.target.value });
+
+  componentDidMount() {
+    // this.fetchWeather();
+    this.setState({ location: localStorage.getItem("location") || "" });
   }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.location !== prevState.location) {
+      this.fetchWeather();
+      localStorage.setItem("location", this.state.location);
+    }
+  }
+
   render() {
     return (
       <div className="app">
         <h1>Classy Weather</h1>
-        <div>
-          <input
-            type="text"
-            placeholder="Search from location..."
-            value={this.state.location}
-            onChange={(e) => this.setState({ location: e.target.value })}
-          />
-        </div>
-        <button onClick={this.fetchWeather}>Get weather</button>
+        <Input
+          location={this.state.location}
+          onChangeLocation={this.setLocation}
+        />
+        {/* <button onClick={this.fetchWeather}>Get weather</button> */}
 
         {this.state.isLoading && <p className="loader">Loading...</p>}
         {this.state.weather.weathercode && (
