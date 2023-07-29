@@ -1,16 +1,16 @@
-import ReactQuiz from "./components/react-quiz-with-context/ReactQuiz";
+// import ReactQuiz from "./components/react-quiz-with-context/ReactQuiz";
 
 // import BankAccount from "./components/bank-account/BankAccount";
 
-// import AtomicBlog from "./components/atomic-blog/AtomicBlog";
+import AtomicBlog from "./components/atomic-blog/AtomicBlog";
 // import Test from "./components/atomic-blog/Test";
 
 function App() {
   return (
     <>
-      <ReactQuiz />
+      {/* <ReactQuiz /> */}
       {/* <BankAccount /> */}
-      {/* <AtomicBlog /> */}
+      <AtomicBlog />
       {/* <Test /> */}
     </>
   );
