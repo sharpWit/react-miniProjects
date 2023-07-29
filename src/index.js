@@ -5,7 +5,8 @@ import App from "./components/react-redux-bank/App";
 import "./components/react-redux-bank/index.css";
 
 // import "./store-v0";
-import store from "./store-v1";
+// import store from "./store-v1";
+import store from "./store-v2";
 import { Provider } from "react-redux";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
